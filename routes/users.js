@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/list', (req, res, next) => {
-  User.findOne({id: '1'}, (err, doc) => {
+  User.find((err, doc) => {
     if (err) {
       res.json({
         msg: '操作失败~',
@@ -36,10 +36,7 @@ router.get('/list', (req, res, next) => {
       if (doc) {
         res.json({
           msg: '成功',
-          data: {
-            name: doc.name,
-            age: doc.age
-          }
+          data: doc
         });
       } else {
         res.json({
